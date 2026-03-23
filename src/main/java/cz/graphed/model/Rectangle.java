@@ -32,6 +32,9 @@ public class Rectangle extends AbstractGraphicObject {
 
     @Override
     public boolean contains(Point p) {
-        return false;
+        return p.x >= position.x &&
+                p.x <= position.x + a &&
+                p.y >= position.y &&
+                p.y <= position.y + b;
     }
 }

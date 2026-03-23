@@ -26,6 +26,13 @@ public class Circle extends AbstractGraphicObject {
 
     @Override
     public boolean contains(Point p) {
-        return false;
+        int cenX = position.x + a / 2;
+        int cenY = position.y + a / 2;
+        int rad = a / 2;
+
+        int dx = p.x - cenX;
+        int dy = p.y - cenY;
+
+        return dx * dx + dy * dy <= Math.pow(rad, 2);
     }
 }

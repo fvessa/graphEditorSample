@@ -40,7 +40,7 @@ public class EditorFrame extends JFrame {
 
         canvas.add(new RectangleRounded(new Point(200,200),Color.BLACK,50,50));
 
-        canvas.add(new Triangle(new Point(50,200),Color.BLACK,25));
+        canvas.add(new Triangle(new Point(50,200),Color.BLACK,50));
     }
 
 }

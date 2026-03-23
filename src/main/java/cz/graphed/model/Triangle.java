@@ -8,9 +8,17 @@ public class Triangle extends AbstractGraphicObject {
     public Triangle() {
     }
 
+    private int cx,cy;
+
     public Triangle(Point position, Color color, int a) {
         super(position, color);
         this.a = a;
+        computeC();
+    }
+
+    private void computeC() {
+        cx=position.x+(int)Math.round(a/2.0);
+        cy=position.y-(int)Math.round(a*Math.sin(Math.PI/3));
     }
 
     public void setA(int a){
@@ -18,29 +26,18 @@ public class Triangle extends AbstractGraphicObject {
     }
 
     @Override
-    public void draw(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(color);
-        int x = position.x;
-        int y = position.y;
+    public void draw(Graphics g){
+        var g2 = (Graphics2D)g;
+        g2.drawLine(position.x,position.y,position.x+a,position.y+a);
+        g2.drawLine(position.x,position.y, position.x+a, position.y);
+        g2.drawLine(position.x+a,position.y,position.x+a,position.y+a);
 
-        int x1 = x;//DL
-        int y1 = y + a;
-
-        int x2 = x + a;//DP
-        int y2 = y + a;
-
-        int x3 = x + a / 2;//nahore
-        int y3 = y;
-
-
-        g2.drawLine(x1, y1, x2, y2);//spodnihrana
-        g2.drawLine(x3, y3, x1, y1);//levahrana
-        g2.drawLine(x2, y2, x3, y3);//pravahrana
     }
 
     @Override
     public boolean contains(Point p) {
-        return false;
+        int dx = (int)Math.round((p.y-position.y)*Math.tan(Math.PI/6));
+        return p.x  >= position.x && p.x<position.x + a -dx
+                && p.y<= position.y && p.y>=cy;
     }
 }
