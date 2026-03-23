@@ -1,9 +1,7 @@
 package cz.graphed.gui;
 
-import cz.graphed.model.Circle;
+import cz.graphed.model.*;
 import cz.graphed.model.Rectangle;
-import cz.graphed.model.RectangleRounded;
-import cz.graphed.model.Square;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +40,7 @@ public class EditorFrame extends JFrame {
 
         canvas.add(new RectangleRounded(new Point(200,200),Color.BLACK,50,50));
 
+        canvas.add(new Triangle(new Point(50,200),Color.BLACK,25));
     }
 
 }
